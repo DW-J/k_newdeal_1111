@@ -1,0 +1,15 @@
+/* Decorative motion lives separately so future component motion can reuse these tokens. */
+:root { --motion-fall-duration: 22s; --motion-drift-duration: 5s; --motion-leaf-opacity: .34; }
+.falling-leaves { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 2; }
+.falling-leaf { position: absolute; top: 0; left: var(--leaf-left); width: var(--leaf-size); height: var(--leaf-size); opacity: 0; animation: leaf-fall var(--leaf-duration, var(--motion-fall-duration)) linear var(--leaf-delay) infinite; will-change: transform, opacity; }
+.falling-leaf > span { display: block; width: 100%; height: 100%; background-image: url('/images/autumn-icons-grid.png'); background-size: 400% 400%; background-repeat: no-repeat; background-position: var(--leaf-position); animation: leaf-drift var(--motion-drift-duration) ease-in-out var(--leaf-delay) infinite alternate; }
+.leaf-1 { --leaf-left: 1%; --leaf-size: 32px; --leaf-delay: -3s; --leaf-position: 66.6667% 0%; }
+.leaf-2 { --leaf-left: 7%; --leaf-size: 25px; --leaf-delay: -14s; --leaf-duration: 26s; --leaf-position: 100% 0%; }
+.leaf-3 { --leaf-left: 94%; --leaf-size: 34px; --leaf-delay: -8s; --leaf-duration: 24s; --leaf-position: 0% 33.3333%; }
+.leaf-4 { --leaf-left: 88%; --leaf-size: 24px; --leaf-delay: -19s; --leaf-duration: 28s; --leaf-position: 33.3333% 33.3333%; }
+.leaf-5 { --leaf-left: 3%; --leaf-size: 22px; --leaf-delay: -21s; --leaf-duration: 30s; --leaf-position: 66.6667% 33.3333%; }
+.leaf-6 { --leaf-left: 97%; --leaf-size: 23px; --leaf-delay: -12s; --leaf-duration: 27s; --leaf-position: 66.6667% 0%; }
+@keyframes leaf-fall { 0% { transform: translateY(-8vh); opacity: 0; } 10%, 85% { opacity: var(--motion-leaf-opacity); } 100% { transform: translateY(105vh); opacity: 0; } }
+@keyframes leaf-drift { from { transform: translateX(-8px) rotate(-20deg); } to { transform: translateX(10px) rotate(25deg); } }
+@media (max-width: 600px) { .leaf-2, .leaf-4, .leaf-5, .leaf-6 { display: none; } .leaf-1 { --leaf-size: 24px; --leaf-left: 1%; } .leaf-3 { --leaf-size: 24px; --leaf-left: 93%; } }
+@media (prefers-reduced-motion: reduce) { .falling-leaves { display: none; } }

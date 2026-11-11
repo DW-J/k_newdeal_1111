@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko" data-mood="calm">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f6"><title>Lingua Live — 실시간 번역</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/motion.css">
+</head>
+<body>
+<div class="falling-leaves" aria-hidden="true">
+  <span class="falling-leaf leaf-1"><span></span></span><span class="falling-leaf leaf-2"><span></span></span><span class="falling-leaf leaf-3"><span></span></span><span class="falling-leaf leaf-4"><span></span></span><span class="falling-leaf leaf-5"><span></span></span><span class="falling-leaf leaf-6"><span></span></span>
+</div>
+<div id="doodle-footer-root"><footer class="footer-fallback">© 2026 lingua live · 언어의 경계를 넘어, 더 자유롭게.</footer></div>
+<header class="topbar"><div class="brand"><span class="brand-icon" aria-hidden="true"></span><span>lingua<span class="brand-light">live</span></span></div><div class="top-note"><span class="status-dot"></span> 대화를 더 가깝게</div></header>
+<main id="main-content" tabindex="-1">
+  <div class="heading"><div><div class="eyebrow"><span>●</span> LIVE TRANSLATION</div><h1>말하면, <em>통하다.</em></h1><p>당신의 이야기를 세 가지 언어로 실시간 번역합니다.</p></div><div class="heading-mark" aria-hidden="true"></div></div>
+  <section class="mood-picker" aria-labelledby="mood-title"><div class="mood-intro"><span class="section-index">MAKE IT YOURS</span><h2 id="mood-title">오늘의 기분은 어떤가요?</h2><p>기분에 맞춰 공간의 색을 바꿔보세요.</p></div><div class="mood-options" role="group" aria-label="기분 선택"><button type="button" class="mood-option" data-mood-option="calm" aria-pressed="true"><span aria-hidden="true"></span> 차분해요</button><button type="button" class="mood-option" data-mood-option="happy" aria-pressed="false"><span aria-hidden="true"></span> 기뻐요</button><button type="button" class="mood-option" data-mood-option="fresh" aria-pressed="false"><span aria-hidden="true"></span> 산뜻해요</button><button type="button" class="mood-option" data-mood-option="warm" aria-pressed="false"><span aria-hidden="true"></span> 따뜻해요</button><button type="button" class="mood-option" data-mood-option="thoughtful" aria-pressed="false"><span aria-hidden="true"></span> 생각이 많아요</button></div></section>
+  <section class="music-panel" aria-labelledby="music-title">
+    <div class="music-info"><span class="section-index">A LITTLE SPACE TO BREATHE</span><h2 id="music-title">잠시 쉬어가는 음악</h2><p>번역하는 시간에 잔잔한 음악을 곁들여 보세요.</p><p class="music-note">마이크를 사용하거나 번역 음성을 들을 때는 음악을 잠시 멈춰 주세요.</p><a id="music-link" href="https://suno.com/s/9SqwUDqe1d4rlvbV" target="_blank" rel="noopener noreferrer">Suno에서 열기 ↗</a><form id="music-form" class="music-form"><label for="music-url">Suno 또는 YouTube 링크</label><div class="music-input-row"><input id="music-url" type="url" inputmode="url" placeholder="Suno 또는 YouTube 링크를 붙여넣으세요" autocomplete="url" required><button type="submit">곡 불러오기</button></div><p id="music-message" role="status" aria-live="polite">Suno 곡 또는 YouTube 동영상 링크를 입력하세요.</p></form></div>
+    <iframe class="music-player" title="Suno 배경음악 플레이어" src="https://suno.com/embed/13700345-af0e-483d-b9e9-c9822d04a04c?sh=9SqwUDqe1d4rlvbV" loading="lazy" allow="autoplay; encrypted-media" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+  </section>
+  <section class="sound-settings" aria-label="효과음 설정"><div><strong>효과음</strong><span>작업에 맞춰 부드러운 소리가 들려요.</span></div><div class="sound-controls"><button type="button" id="sound-toggle" aria-pressed="true">효과음 켜짐</button><label for="sound-volume">음량</label><input id="sound-volume" type="range" min="0" max="50" value="18" aria-label="효과음 음량"></div></section>
+  <section class="workspace" aria-label="실시간 번역 작업 공간">
+    <div class="source-panel"><div class="panel-top"><div><span class="section-index">01 / YOUR VOICE</span><h2>번역할 내용</h2></div><span id="state" class="state"><span></span> 대기 중</span></div>
+      <div class="source-controls"><label for="source-language">말하는 언어</label><select id="source-language"><option value="ko-KR">한국어</option><option value="en-US">English</option><option value="ja-JP">日本語</option><option value="zh-CN">中文</option><option value="es-ES">Español</option><option value="fr-FR">Français</option><option value="de-DE">Deutsch</option><option value="it-IT">Italiano</option><option value="pt-BR">Português</option><option value="ru-RU">Русский</option><option value="hi-IN">हिन्दी</option><option value="ar-SA">العربية</option><option value="id-ID">Bahasa Indonesia</option><option value="vi-VN">Tiếng Việt</option><option value="th-TH">ไทย</option><option value="tr-TR">Türkçe</option><option value="nl-NL">Nederlands</option></select></div>
+      <label class="input-label" for="transcript">텍스트 입력 <span>최대 4,000자</span></label>
+      <textarea id="transcript" class="transcript" maxlength="4000" placeholder="직접 입력하거나, 파일을 올리거나, 마이크로 말씀해 주세요."></textarea><div id="interim" class="interim" aria-live="polite"></div>
+      <div class="input-actions"><button type="button" id="translate-text" class="primary-action">번역하기</button><label for="file-input" class="upload-action" tabindex="0" role="button">파일 업로드</label><input id="file-input" type="file" accept=".txt,.md,.csv,.json,text/plain,text/markdown,text/csv,application/json" hidden><span id="file-name">TXT · MD · CSV · JSON / UTF-8</span></div>
+      <div class="source-bottom"><div class="mic-wrap"><button id="mic" class="mic" aria-label="음성 인식 시작"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v4M9 22h6"/></svg></button><div><strong id="mic-title">대화 시작하기</strong><small id="mic-hint">버튼을 눌러 마이크를 켜주세요</small></div></div><button id="clear" class="clear">↺ <span>초기화</span></button></div>
+    </div>
+    <div class="translation-panel"><div class="panel-top translation-heading"><div><span class="section-index">02 / TRANSLATIONS</span><h2>번역 결과 <span class="sparkle">✳</span></h2></div><span class="powered">✦ &nbsp; Powered by Gemini</span></div><p class="translation-desc">언어를 선택하고 번역을 복사하거나 음성으로 들어보세요.</p>
+      <div id="cards" class="cards"></div><div class="translation-footer"><span>✧</span> 음성은 자동으로, 텍스트와 파일은 번역하기를 눌러 번역합니다.</div>
+    </div>
+  </section>
+  <section class="usage-panel" aria-label="토큰 사용 현황"><div><span class="section-index">GEMINI USAGE</span><h2>토큰 사용 현황</h2><p>번역 및 음성 생성의 토큰 사용량</p></div><div class="usage-stats"><div><span>입력</span><strong id="usage-input">—</strong></div><div><span>출력</span><strong id="usage-output">—</strong></div><div><span>생각</span><strong id="usage-thoughts">—</strong></div><div><span>전체</span><strong id="usage-total">—</strong></div></div><button id="refresh-usage" class="usage-refresh" type="button">↻ 새로고침</button><p id="usage-note" class="usage-note" aria-live="polite"></p></section>
+  <div class="bottom-line"><span>✳ &nbsp; 작은 대화가 큰 연결이 됩니다.</span><span>LISTEN. TRANSLATE. CONNECT.</span></div>
+  <div id="error" class="error" role="alert" hidden></div>
+</main>
+<button type="button" id="back-to-top" class="back-to-top" aria-label="맨 위로 이동" hidden><span aria-hidden="true">↑</span><span>맨 위로</span></button>
+<script src="/app.js" defer></script>
+<script src="/doodle-footer.js" defer></script>
+</body></html>
